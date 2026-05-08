@@ -42,7 +42,7 @@ git clone git@github.com:lucastamoios/skills.git .claude/skills
 · `meeting-distill` · `business-rules`
 
 **Quality.**
-`concept-review` · `concept-review-docs` · `tech-debt` · `audit` · `shield`
+`concept-review` · `concept-review-docs` · `tech-debt`
 
 **Thinking.**
 `brainstorm` · `think-through` · `fix`
