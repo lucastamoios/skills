@@ -111,8 +111,8 @@ Each task follows TDD and includes exact file paths, complete code, and acceptan
 - [ ] **Step 1: Write the failing test**
 
 ```python
-# Implements REQ 1 from docs/requirements/authorization.md
 def test_specific_behavior():
+    """Describe the user-observable behavior here. Do not include REQ/issue refs."""
     result = function(input)
     assert result == expected
 ```
@@ -158,6 +158,8 @@ Defaults:
 - **Test the general interaction, not the specific instance.** If the change adds an instance of a pattern (a new YAML-driven field, a new permission tied to an existing role, a new entry in a registry), the test should pin the pattern's behavior end-to-end with one representative example. Before writing a new test, search for existing tests of the same pattern and prefer extending or parametrizing them. If the pattern has no existing test, write one general test that future additions will inherit for free.
 - **Pin user-observable behavior, not file structure.** Tests that assert a YAML key exists, a field appears at a specific index, or a key is absent from a config file are usually pinning the diff, not behavior. They break on benign refactors and add maintenance without catching real bugs. If a behavior cannot be observed through a view or a public API, ask whether it needs a test at all.
 - **Pick the smallest test set that validates the requirements.** Not the largest set that fits a LOC budget. One well-scoped integration test typically beats five narrow assertions on the same path.
+- **Traceability lives in this plan, not in test code.** The plan's `## Tests` table and `## Traceability` table are the right place to record which REQ each test validates. Do not direct the implementer to write `# Implements REQ N` annotations in the test files themselves; test docstrings describe behaviour, not provenance.
+- **TDD scaffolds, only some survive commit.** When directing the implementer, remind them that not every test written during the cycle must end up in the final commit. Tests pinning individual account configuration, tests duplicating coverage already in a general pattern test, and tests pinning file structure get deleted before commit.
 
 ## Integration test tasks
 
@@ -171,8 +173,8 @@ When a full vertical slice is complete (a task that connects the outermost layer
 - [ ] **Step 1: Write integration test**
 
 ```python
-# Integration test for REQ 1, 2, 3 from docs/requirements/authorization.md
 def test_admin_can_export_records_as_csv():
+    """Admin user receives the records as CSV from the export endpoint."""
     # Calls the API endpoint, goes through all real layers, verifies final outcome
     ...
 ```

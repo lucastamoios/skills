@@ -101,19 +101,11 @@ Then the assertion itself must:
 - Have a clear name that describes the expected behavior.
 - Use real code, not mocks (unless mocking is unavoidable, like external APIs).
 - Put imports at the top of the file, not inside the test body.
-- Be traceable. Add a comment at the top of the test referencing what it implements:
+- Name and describe the behavior, not its provenance. Do not write `# Implements REQ N`, `# COM-XXXX`, or any issue/requirement reference in the test docstring or comments. The link from a test to a requirement lives in the PR description, the commit message, and the Linear issue body. The test's name and assertions describe the behavior:
 
 ```python
-# Implements REQ 3 from docs/requirements/authorization.md
 def test_only_org_admins_can_export():
-    ...
-```
-
-Or if no docs exist:
-
-```python
-# Implements: users with expired sessions are redirected to login
-def test_expired_session_redirects_to_login():
+    """Users without the admin role on the org get a 403 from the export endpoint."""
     ...
 ```
 
