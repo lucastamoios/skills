@@ -166,11 +166,9 @@ git diff <base>...<CURRENT_BRANCH>
 git log <base>..HEAD --oneline
 ```
 
-Write the description using this structure:
+Write the description using exactly this structure — only these two sections, nothing else:
 
 ```
-<1-3 sentence summary of what this change does and why>
-
 ## Business Rules
 
 <bulleted list where each item starts with "Added:", "Changed:", or "Removed:">
@@ -182,7 +180,7 @@ Write the description using this structure:
 <if there are no architectural changes, write "No architectural changes.">
 ```
 
-If a screenshot or video walkthrough was captured (Step 5 or via `/record-pr-video`), add a `## Screenshot` or `## Walkthrough` section at the end. Reference any video artifacts at `~/work/tasks/<ISSUE-ID>/` and tell the user to drag-drop the `.mp4` into the PR body so GitHub auto-hosts it (since the upload endpoint is not exposed via the public API). If they prefer a no-browser path, mention the gif-on-branch alternative described in `/record-pr-video`.
+Do not add a summary paragraph, a "what changed" preamble, a screenshot block, or a walkthrough block in the description itself. The title carries the headline; the diff carries the file-level detail. If a screenshot or video walkthrough was captured (Step 5 or via `/record-pr-video`), upload it as a PR comment instead of putting it in the description — keeps the description focused on the two sections reviewers care about.
 
 Focus on what is deeply being changed, not surface-level file edits. Think about what a reviewer needs to understand about the intent and impact of this change.
 
