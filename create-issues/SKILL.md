@@ -28,7 +28,7 @@ For each plan task (or group of related requirements if no plan exists), estimat
 - If the plan has code blocks, count the lines in those blocks as a rough estimate.
 - If the plan has file paths with line ranges for modifications, use those ranges.
 - If no plan exists, use heuristics: each requirement typically produces 20-50 LOC depending on complexity (a simple validation is ~20, a new endpoint with serializer is ~50, a new service with multiple methods is ~80-100).
-- **Test code counts as only 50-100 LOC regardless of actual size.** Tests and test helpers can be verbose, so they should not inflate the estimate. Cap test LOC at 100 when calculating issue size.
+- **Tests are scoped by the requirements, not by a LOC budget.** Include only the tests the plan calls for. Prefer integration tests against views over many narrow unit tests, and prefer extending an existing general-pattern test over writing a new instance-specific one. When estimating issue size, count test LOC at face value — but if you are adding tests beyond what the requirements justify, cut them rather than inflating the estimate. A 250 LOC issue with 30 LOC of well-targeted tests beats a 250 LOC issue with 150 LOC of tests pinning implementation details.
 - The target is ~200-300 LOC per issue. Some issues will be smaller and some larger, but the average should land in that range.
 
 ## Step 3: Group into issues
@@ -38,6 +38,7 @@ Split the work into issues. Each issue should:
 - **Be cohesive.** It should tackle one thing, not multiple unrelated concerns. Group requirements and tasks that belong together (e.g., "authorization export endpoint" = the endpoint, the serializer, the permissions check, and the tests).
 - **Be self-contained.** Someone working on this issue should not need to read another issue to understand what to do. All relevant requirements, design decisions, and tasks must be in the issue body.
 - **Target ~200-300 LOC.** Use the estimates from Step 2 to split. If a single task is already ~300 LOC, it becomes its own issue. If three small tasks together are ~250 LOC, group them.
+- **Never create a test-only issue.** Tests must ship in the same issue as the implementation they exercise, so the resulting PR contains both production and test changes. If the LOC budget pushes you to split tests off into their own issue, that is the wrong split — find a different seam (e.g., split the implementation into two narrower vertical slices, each shipping with its own tests). A standalone "regression tests for X" issue produces a PR with no production change, which adds review overhead without delivering anything observable to users.
 - **Follow outside-in order.** If issue B depends on code from issue A, mark that dependency.
 
 Present the proposed grouping to the user:
