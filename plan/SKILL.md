@@ -148,6 +148,17 @@ Steps should be bite-sized (2-5 minutes each):
 - "Run the tests and make sure they pass" is another step.
 - "Refactor" is another step.
 
+## Test design
+
+Tests are not free. Each test costs review attention, CI time, and is maintenance debt the next refactor pays. Plan tests like you would plan code: only what the requirements justify, and aimed at the highest-ROI target.
+
+Defaults:
+
+- **Prefer integration tests against views.** A view test exercises permissions, validation, business rules, persistence, and templating in one shot. Default to it. Reach for unit tests only for pure-function logic with non-trivial branching that a view test cannot reach. Do not mock anything except third-party APIs (Stripe, SendGrid, Twilio).
+- **Test the general interaction, not the specific instance.** If the change adds an instance of a pattern (a new YAML-driven field, a new permission tied to an existing role, a new entry in a registry), the test should pin the pattern's behavior end-to-end with one representative example. Before writing a new test, search for existing tests of the same pattern and prefer extending or parametrizing them. If the pattern has no existing test, write one general test that future additions will inherit for free.
+- **Pin user-observable behavior, not file structure.** Tests that assert a YAML key exists, a field appears at a specific index, or a key is absent from a config file are usually pinning the diff, not behavior. They break on benign refactors and add maintenance without catching real bugs. If a behavior cannot be observed through a view or a public API, ask whether it needs a test at all.
+- **Pick the smallest test set that validates the requirements.** Not the largest set that fits a LOC budget. One well-scoped integration test typically beats five narrow assertions on the same path.
+
 ## Integration test tasks
 
 When a full vertical slice is complete (a task that connects the outermost layer to the deepest dependency), include an integration test task:

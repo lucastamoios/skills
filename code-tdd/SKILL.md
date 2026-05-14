@@ -75,14 +75,32 @@ Present the planned order to the user briefly: "I will start with X (the user-fa
 
 For each piece of behavior, follow this cycle strictly.
 
-### RED - Write one failing test
+### Step 0 - Classify the change before writing anything
 
-Write a single, minimal test that describes one behavior you want to add.
+Not every change needs a new test. Before you reach for RED, pick one of four cases:
 
-The test must:
+- **New behavior in a feature with no integration test yet.** Write the integration test that will grow with this feature. Your first failing assertion is RED.
+- **New behavior in a feature that already has an integration test.** Extend that test with a new failing assertion or scenario. That new assertion is RED. Do not create a parallel test file.
+- **New instance of an already-tested pattern** (one more YAML row, one more registry entry, one more permission for an existing role). There is no RED step. Locate the existing pattern test, run it, confirm it still passes after your change. That is your full cycle.
+- **Modification of existing behavior.** Update the existing assertion so it fails with the new expectations. That update is RED. Then change the code.
+
+The "grow integration tests, don't spawn them" rule is the default for the first two cases. One growing test per feature is the goal, not a constellation of narrow ones.
+
+### RED - Produce the failing assertion
+
+For the cases that need one, produce a single failing assertion (new test, new assertion in an existing test, or updated assertion) that describes one behavior.
+
+Pick the right target before writing it:
+
+- **Prefer integration tests against the user-facing layer** (views, HTTP handlers, public function). A view test covers permissions, validation, business rules, persistence, and templating in one shot. Reach for a unit test only for pure-function logic that the view cannot reach.
+- **Pin user-observable behavior, not file structure.** A test that asserts a YAML key exists, a field sits at a specific index, or a key is absent from a config file is pinning the diff, not behavior. Skip it. If the behavior cannot be observed through the view or public API, the test almost never earns its maintenance cost.
+- **Do not mock unless you must.** External APIs (Stripe, SendGrid, Twilio) get mocked. Database, cache, internal services do not.
+
+Then the assertion itself must:
 - Test one behavior only. If "and" appears in the test name, split it.
 - Have a clear name that describes the expected behavior.
 - Use real code, not mocks (unless mocking is unavoidable, like external APIs).
+- Put imports at the top of the file, not inside the test body.
 - Be traceable. Add a comment at the top of the test referencing what it implements:
 
 ```python
