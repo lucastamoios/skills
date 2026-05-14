@@ -122,11 +122,17 @@ Handle the exit codes:
 
 After the loop completes, make sure you are back on the original branch by running `git checkout <CURRENT_BRANCH>`.
 
-## Step 5: Screenshot the UI (if applicable)
+## Step 5: Capture UI evidence (screenshot or video)
 
-Check whether the diff touches frontend-visible code (Django templates, Alpine.js widgets, CSS, or view functions that render templates).
+Check whether the diff touches frontend-visible code (Django templates, Alpine.js widgets, CSS, or view functions that render templates). If it does not, skip this step entirely.
 
-If it does:
+If it does, decide which artifact suits the change:
+- **Screenshot** for a single static state (a layout fix, a new page, a single rendering change). Use the screenshot path below.
+- **Video walkthrough** for an interactive flow, a before/after comparison, or a bug reproduction. **Stop and tell the user**: "this PR would benefit from a walkthrough video; run `/record-pr-video <ISSUE-ID>` first, then re-invoke `/create-pr`." Do not record the video yourself - that skill owns the recording standard, the Playwright scripting, and the encoding. When `/record-pr-video` has run, its artifacts will be at `~/work/tasks/<ISSUE-ID>/` (mp4 + gif). Reference them in the description in Step 6.
+
+If you cannot tell which is right, ask the user via AskUserQuestion.
+
+### Screenshot path
 
 1. **Check if the dev server is running** by curling `$DEV_URL` (allow insecure certificates). If it is not running, start it with `just dev-start` from the project's web-client directory and wait for it to be reachable.
 
@@ -138,8 +144,6 @@ If it does:
    ```
 
 4. **Upload the screenshot** and get a URL you can embed in the PR description. Use `gh` to upload it as part of the PR body (you can include it as a Markdown image in the description).
-
-If the diff does not touch any frontend-visible code, skip this step entirely.
 
 ## Step 6: Create or update the PR
 
@@ -178,7 +182,7 @@ Write the description using this structure:
 <if there are no architectural changes, write "No architectural changes.">
 ```
 
-If a screenshot was captured in Step 5, add a `## Screenshot` section at the end with the image embedded as Markdown.
+If a screenshot or video walkthrough was captured (Step 5 or via `/record-pr-video`), add a `## Screenshot` or `## Walkthrough` section at the end. Reference any video artifacts at `~/work/tasks/<ISSUE-ID>/` and tell the user to drag-drop the `.mp4` into the PR body so GitHub auto-hosts it (since the upload endpoint is not exposed via the public API). If they prefer a no-browser path, mention the gif-on-branch alternative described in `/record-pr-video`.
 
 Focus on what is deeply being changed, not surface-level file edits. Think about what a reviewer needs to understand about the intent and impact of this change.
 
