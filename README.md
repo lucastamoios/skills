@@ -183,4 +183,4 @@ The presentation of this collection was inspired by [Matt Pocock's skills reposi
 
 ## License
 
-A license has not been selected for this collection. It is currently marked `UNLICENSED`.
+[MIT](LICENSE). Copyright © 2026 Lucas Almeida Aguiar.

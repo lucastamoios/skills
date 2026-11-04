@@ -43,4 +43,4 @@ The tests install into temporary directories, answer the real questionnaire thro
 
 ## License and private data
 
-The collection is currently marked `UNLICENSED`; see the README for the current license status. Private profiles, notes and account settings remain outside the repository and installed release.
+The collection is available under the [MIT license](LICENSE). Private profiles, notes and account settings remain outside the repository and installed release.
