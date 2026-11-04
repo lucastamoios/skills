@@ -1,4 +1,4 @@
-# Agent Skills
+# Skills
 
 **The skills I use to build software, keep useful context and turn ideas into work.**
 
@@ -15,8 +15,8 @@ You need Python 3.10 or newer and a filesystem that supports symbolic links. The
 ### 1. Download the collection
 
 ```bash
-git clone https://github.com/lucastamoios/agent-skills.git
-cd agent-skills
+git clone https://github.com/lucastamoios/skills.git
+cd skills
 ```
 
 ### 2. Install and answer the questions
