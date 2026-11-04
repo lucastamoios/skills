@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "description": "Resolve one shared model policy. This locator carries no executable or proposed model assignments. A standalone runner may supply an explicit policy file or approved assignments in its request.",
+  "assignment_key_prefix": "review:",
+  "missing_policy": "Prepare context and request the policy or explicit model choices. Do not substitute the parent model.",
+  "profile_key": "execution.model_policy"
+}

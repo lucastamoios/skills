@@ -1,0 +1,133 @@
+{
+  "contract": "marketing/v1",
+  "skill": "script",
+  "status": "ok",
+  "result": {
+    "title": "A fictional checklist for organizing a desk",
+    "format": "A presenter demonstrates a desk checklist",
+    "estimated_seconds": 43,
+    "hook": "Three cards can make a fictional desk routine easier to remember.",
+    "beats": [
+      {
+        "id": "b1",
+        "function": "hook",
+        "line": "Place a card beside each of three example objects.",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 7,
+        "mechanisms": [
+          "contrast",
+          "demonstration",
+          "proof"
+        ]
+      },
+      {
+        "id": "b2",
+        "function": "so_what",
+        "line": "Use one card for the task you want to finish.",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 6,
+        "mechanisms": [
+          "result_promise"
+        ]
+      },
+      {
+        "id": "b3",
+        "function": "authority",
+        "line": "This is a fictional demonstration, not a customer result.",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 4,
+        "mechanisms": [
+          "authority"
+        ]
+      },
+      {
+        "id": "b4",
+        "function": "step",
+        "line": "First, choose one object to put away.",
+        "on_screen_text": "One clear action",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 6,
+        "mechanisms": [
+          "simplicity",
+          "demonstration"
+        ]
+      },
+      {
+        "id": "b5",
+        "function": "step",
+        "line": "Next, write one action on the card.",
+        "on_screen_text": "One clear action",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 7,
+        "mechanisms": [
+          "contrast"
+        ]
+      },
+      {
+        "id": "b6",
+        "function": "step",
+        "line": "Finally, check whether the action is clear.",
+        "on_screen_text": "One clear action",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 5,
+        "mechanisms": [
+          "simplicity"
+        ]
+      },
+      {
+        "id": "b7",
+        "function": "cta",
+        "line": "Download the fictional checklist from the example page.",
+        "visual": "The presenter moves a card beside an object on a desk.",
+        "seconds": 8,
+        "mechanisms": [
+          "other"
+        ]
+      }
+    ],
+    "cta": {
+      "line": "Download the fictional checklist from the example page.",
+      "product": "Example Workshop",
+      "pain_named": "medo de o dev ficar irrelevante com a IA"
+    },
+    "claims": [
+      {
+        "text": "Fictional example for this field. Confirm the corresponding evidence before real use.",
+        "status": "sourced",
+        "source": "Fictional example supplied for validation."
+      },
+      {
+        "text": "Fictional example for this field. Confirm the corresponding evidence before real use.",
+        "status": "sourced",
+        "source": "Fictional example supplied for validation."
+      },
+      {
+        "text": "Fictional example for this field. Confirm the corresponding evidence before real use.",
+        "status": "needs_source",
+        "source": "Fictional example supplied for validation."
+      }
+    ],
+    "preparation": [
+      "Abrir o app e o git log no notebook",
+      "Papel e caneta para os 3 passos",
+      "Print da conversa com o especialista (pedir permissão)"
+    ],
+    "visual_alternatives": [
+      {
+        "name": "Diálogo consigo mesmo",
+        "description": "Fictional example for this field. Confirm the corresponding evidence before real use.",
+        "tradeoff": "Fictional example for this field. Confirm the corresponding evidence before real use."
+      },
+      {
+        "name": "Dividir em dois vídeos",
+        "description": "Fictional example for this field. Confirm the corresponding evidence before real use.",
+        "tradeoff": "Fictional example for this field. Confirm the corresponding evidence before real use."
+      }
+    ],
+    "changes": []
+  },
+  "missing_inputs": [],
+  "warnings": [
+    "43 s passa da meta de 30 s; ver a alternativa de dividir."
+  ]
+}

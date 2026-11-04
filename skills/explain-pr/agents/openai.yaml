@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explain PR for Lighthouse"
+  short_description: "Write a PR explanation and post it to Lighthouse"
+  default_prompt: "Use $explain-pr to write a Lighthouse explanation for this the configured organization PR and deliver it to the local Lighthouse server."

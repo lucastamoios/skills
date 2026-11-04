@@ -1,0 +1,4 @@
+interface:
+  display_name: "Priorities"
+  short_description: "Rank today’s work by leverage and urgency"
+  default_prompt: "Use $priorities to rank today's work, choose one primary outcome and two wins, then reconcile fresh task state. Put the user-controlled unblockers and the one thing in Today, and put the wins and other meaningful actionable work in To Do. Do not create cards for watches or tiny tasks."

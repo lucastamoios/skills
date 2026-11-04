@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revisar evidências do negócio"
+  short_description: "Avalie resultados e recomende o próximo passo."
+  default_prompt: "Use $business-review para avaliar estes resultados e decidir como seguir."

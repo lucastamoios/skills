@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "user": {
+    "display_name": "",
+    "language": "",
+    "timezone": "",
+    "github_login": "",
+    "technical_knowledge": ""
+  },
+  "paths": {
+    "brain": "",
+    "vault": "",
+    "tasks": "",
+    "artifacts": "",
+    "scripts": "",
+    "docs": "",
+    "logs": "",
+    "worktrees": "",
+    "skills": "",
+    "plugins": "",
+    "code": ""
+  },
+  "work": {
+    "github_repository": "",
+    "github_login": "",
+    "issue_prefix": "",
+    "branch_prefix": "",
+    "requester_aliases": {},
+    "requester_order": [],
+    "bot_markers": [],
+    "direction_notes": [],
+    "meeting_log": "",
+    "knowledge_root": "",
+    "task_destinations": [],
+    "checkout": ""
+  },
+  "contexts": {},
+  "integrations": {},
+  "marketing": {
+    "root": "",
+    "default_creator": "",
+    "expert_name": "",
+    "expert_notes": ""
+  },
+  "execution": {
+    "model_policy": "",
+    "evidence_collection": {}
+  },
+  "timesheet": {
+    "profile": ""
+  }
+}

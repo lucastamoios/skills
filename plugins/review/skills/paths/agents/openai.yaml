@@ -1,0 +1,4 @@
+interface:
+  display_name: "Path Review"
+  short_description: "Map basis paths for review and QA"
+  default_prompt: "Use $review:paths with an explicit input file and output path, or prepare an independent agent for this change."

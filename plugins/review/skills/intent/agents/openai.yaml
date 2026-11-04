@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intent Review"
+  short_description: "Check whether a change fulfills its intended outcome"
+  default_prompt: "Use $review:intent with an explicit input file and output path, or prepare an independent agent for this change."

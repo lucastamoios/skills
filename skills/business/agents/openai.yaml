@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orientação de negócios"
+  short_description: "Conduza decisões de negócio na mesma conversa."
+  default_prompt: "Use $business para me ajudar a escolher o próximo passo do meu projeto."

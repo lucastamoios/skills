@@ -1,0 +1,31 @@
+{
+  "name": "review",
+  "version": "0.2.7",
+  "description": "Independent review agents with explicit inputs, outputs, models, and evidence consolidation.",
+  "author": {
+    "name": "Lucas Aguiar"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Review",
+    "shortDescription": "Focused code review and QA lenses",
+    "longDescription": "Run focused review lenses in separate agents with explicit source snapshots, file contracts, model routing, and consolidated evidence.",
+    "developerName": "Lucas Aguiar",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Code review",
+      "Test quality and reliability review",
+      "Independent finding verification",
+      "QA planning",
+      "Interactive architecture and annotated function diffs"
+    ],
+    "defaultPrompt": [
+      "Run independent review agents for this change and consolidate their findings.",
+      "Map the behavioral paths in this change.",
+      "Check whether this PR fulfills its intent.",
+      "Check whether these tests protect business rules and avoid flakiness.",
+      "Teach me this reviewed change from outcome to code.",
+      "Map the architecture of this change with changed modules and annotated function diffs."
+    ]
+  }
+}

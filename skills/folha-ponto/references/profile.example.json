@@ -1,0 +1,25 @@
+{
+  "employer": {
+    "name": "",
+    "cpf": ""
+  },
+  "employee": {
+    "name": "",
+    "cpf": "",
+    "role": "Empregada domestica",
+    "ctps": ""
+  },
+  "schedule": {
+    "start": "08:00",
+    "standard_end": "17:00",
+    "presence_minutes": 540,
+    "tolerance_minutes": 60,
+    "break_start": "",
+    "break_end": ""
+  },
+  "special_dates": [],
+  "controls": {
+    "entry_prefix": "1000001",
+    "exit_prefix": "1000002"
+  }
+}

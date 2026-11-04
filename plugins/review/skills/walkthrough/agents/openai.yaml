@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Walkthrough"
+  short_description: "Connect ticket requirements to code, one part at a time"
+  default_prompt: "Use $review:walkthrough to prepare this change in an independent agent, start with requirement sections and their implementation evidence, and then teach it one part at a time."

@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "common.schema.json",
+  "$defs": {
+    "creator": {
+      "type": "object",
+      "properties": {
+        "handle": {
+          "type": "string"
+        },
+        "niche": {
+          "type": "string"
+        },
+        "audience": {
+          "type": "string",
+          "description": "Who the creator wants to reach and what they want."
+        },
+        "brand": {
+          "type": "string",
+          "description": "Personal brand document (cult): origin story, beliefs, enemies, weaknesses, associations, language, format."
+        },
+        "voice_samples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Literal sentences the creator said, to imitate the voice."
+        },
+        "authority": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Verifiable credentials the creator allows to be said."
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What the creator will not say, show or promise."
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What the creator can show: screen recordings, objects, places, people."
+        }
+      },
+      "required": [
+        "niche",
+        "brand"
+      ],
+      "additionalProperties": false
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "offer": {
+          "type": "string"
+        },
+        "audience": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "free": {
+          "type": "boolean"
+        },
+        "link_location": {
+          "type": "string",
+          "description": "Where the viewer finds it, e.g. bio."
+        }
+      },
+      "required": [
+        "name",
+        "offer"
+      ],
+      "additionalProperties": false
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "source"
+      ],
+      "additionalProperties": false,
+      "description": "A concrete fact, case or answer from the creator."
+    },
+    "missing_input": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "why",
+        "question"
+      ],
+      "additionalProperties": false
+    },
+    "job": {
+      "type": "string",
+      "enum": [
+        "make_me_laugh",
+        "thats_so_me",
+        "thats_so_us",
+        "help_me_do",
+        "make_me_feel_or_think"
+      ],
+      "description": "The work the video does for the viewer."
+    },
+    "mechanism": {
+      "type": "string",
+      "enum": [
+        "demonstration",
+        "result_promise",
+        "simplicity",
+        "identification",
+        "contrast",
+        "proof",
+        "curiosity_gap",
+        "authority",
+        "humor",
+        "story",
+        "list_to_save",
+        "geographic_hook",
+        "controversy",
+        "other"
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "sourced",
+            "needs_source"
+          ]
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "criterion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "question"
+      ],
+      "additionalProperties": false
+    },
+    "beat": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "function": {
+          "type": "string",
+          "description": "What this beat does for the viewer: hook, promise, step, proof, payoff, cta..."
+        },
+        "line": {
+          "type": "string",
+          "description": "Exact spoken line."
+        },
+        "on_screen_text": {
+          "type": "string"
+        },
+        "visual": {
+          "type": "string",
+          "description": "What the camera shows."
+        },
+        "seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mechanisms": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/mechanism"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "function",
+        "line",
+        "visual",
+        "seconds"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

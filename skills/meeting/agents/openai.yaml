@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meeting"
+  short_description: "Prepare concise Slack-ready work updates"
+  default_prompt: "Use $meeting to prepare a concise Slack-ready update for my next work meeting."

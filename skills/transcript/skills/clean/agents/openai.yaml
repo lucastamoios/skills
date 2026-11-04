@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean Transcript"
+  short_description: "Create publication-ready faithful transcripts"
+  default_prompt: "Use $transcript:clean to produce publication-ready conversational prose without summarizing. Preserve every substantive turn, idea, voice, and chronology, apply confirmed contextual resolutions, validate fidelity against the source, and mark remaining uncertain passages inline."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Desenhar um experimento"
+  short_description: "Transforme dúvidas do negócio em testes úteis."
+  default_prompt: "Use $business-experiment para escolher e planejar o próximo teste."

@@ -1,0 +1,20 @@
+{
+  "name": "transcript",
+  "version": "0.3.2+codex.20260822",
+  "description": "Clean and reconstruct noisy meeting transcripts into publication-ready conversational prose with strict fidelity validation.",
+  "author": {
+    "name": "Lucas Aguiar"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Transcript",
+    "shortDescription": "Create publication-ready faithful transcripts.",
+    "longDescription": "Transcript reconstructs interrupted conversation into publication-ready prose, improves grammar and flow, removes verbal noise, preserves every substantive turn, voice, and chronology, validates coverage against the source, and marks uncertain wording inline.",
+    "developerName": "Lucas Aguiar",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Clean this transcript into publication-ready conversational prose without summarizing. Preserve every substantive turn, idea, voice, and chronology, apply confirmed contextual resolutions, validate fidelity against the source, and mark remaining uncertain passages inline."
+    ]
+  }
+}

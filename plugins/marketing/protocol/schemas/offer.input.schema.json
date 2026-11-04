@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "offer.input.schema.json",
+  "title": "marketing:offer input",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "offer"
+    },
+    "language": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "creator": {
+          "$ref": "common.schema.json#/$defs/creator"
+        },
+        "product": {
+          "$ref": "common.schema.json#/$defs/product"
+        },
+        "product_notes": {
+          "type": "string",
+          "description": "Free text about the product: content, modules, promise, history."
+        },
+        "material": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/material"
+          },
+          "description": "Facts and cases that can serve as proof."
+        },
+        "goals": {
+          "type": "string",
+          "description": "What the creator wants from the offer (followers, leads, sales)."
+        },
+        "expert_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "creator",
+        "product"
+      ]
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "input"
+  ]
+}

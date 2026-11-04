@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folha de Ponto"
+  short_description: "Gera folha de ponto a partir do BRCondos"
+  default_prompt: "Use $folha-ponto para buscar os acessos do mês no BRCondos, calcular as horas extras e gerar a folha em PDF."

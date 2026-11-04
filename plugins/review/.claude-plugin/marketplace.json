@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "review-local",
+  "description": "Local concise review skills for Claude and Codex.",
+  "owner": {
+    "name": "Lucas Aguiar"
+  },
+  "plugins": [
+    {
+      "name": "review",
+      "description": "Concise, evidence-backed lenses for code review and QA planning.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

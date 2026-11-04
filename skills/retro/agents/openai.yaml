@@ -1,0 +1,6 @@
+interface:
+  display_name: "Retro"
+  short_description: "Capture knowledge and improve workflows on request"
+  default_prompt: "Use $retro to review this session and propose durable knowledge and workflow improvements."
+policy:
+  allow_implicit_invocation: false

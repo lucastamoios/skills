@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reference.input.schema.json",
+  "title": "marketing:reference input",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "reference"
+    },
+    "language": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "video": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "platform": {
+              "type": "string"
+            },
+            "duration_seconds": {
+              "type": "number"
+            },
+            "caption": {
+              "type": "string"
+            },
+            "transcript": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "number"
+                  },
+                  "end": {
+                    "type": "number"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "start",
+                  "text"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "frames": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "t": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "t",
+                  "description"
+                ],
+                "additionalProperties": false
+              },
+              "description": "Frame descriptions with timestamps."
+            },
+            "metrics": {
+              "type": "object",
+              "properties": {
+                "views": {
+                  "type": "number"
+                },
+                "followers": {
+                  "type": "number"
+                },
+                "likes": {
+                  "type": "number"
+                },
+                "comments": {
+                  "type": "number"
+                },
+                "shares": {
+                  "type": "number"
+                },
+                "saves": {
+                  "type": "number"
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "niche": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "transcript"
+          ],
+          "additionalProperties": false
+        },
+        "notes": {
+          "type": "string",
+          "description": "Expert's explanation of why it worked, if any. Takes precedence over inference."
+        }
+      },
+      "required": [
+        "video"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "input"
+  ],
+  "additionalProperties": false
+}

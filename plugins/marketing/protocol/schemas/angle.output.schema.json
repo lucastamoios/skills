@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "angle.output.schema.json",
+  "title": "marketing:angle output",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "angle"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "needs_input",
+        "blocked"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "angles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "thesis": {
+                "type": "string",
+                "description": "The single idea the video defends, one sentence."
+              },
+              "viewer_before": {
+                "type": "string",
+                "description": "What the viewer believes or lives today."
+              },
+              "viewer_after": {
+                "type": "string",
+                "description": "What changes for them after watching."
+              },
+              "so_what": {
+                "type": "string",
+                "description": "Answer to 'what do I gain?', in the viewer's terms (money, time, status, safety)."
+              },
+              "job": {
+                "$ref": "common.schema.json#/$defs/job"
+              },
+              "tension": {
+                "type": "string"
+              },
+              "proof": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/claim"
+                }
+              },
+              "authority": {
+                "type": "string",
+                "description": "Why believe this creator, from creator.authority only."
+              },
+              "demonstrable": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "What can be shown on screen to carry the idea."
+              },
+              "fit_with_reference": {
+                "type": "string",
+                "description": "How the reference mechanism applies, or why it does not."
+              },
+              "cta_bridge": {
+                "type": "string",
+                "description": "How the topic leads naturally to the product."
+              },
+              "risks": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "thesis",
+              "viewer_before",
+              "viewer_after",
+              "so_what",
+              "job",
+              "proof",
+              "demonstrable",
+              "cta_bridge"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "recommended": {
+          "type": "string",
+          "description": "id of the recommended angle"
+        },
+        "why": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "angles",
+        "recommended",
+        "why"
+      ],
+      "additionalProperties": false
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/missing_input"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "status",
+    "result",
+    "missing_inputs",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

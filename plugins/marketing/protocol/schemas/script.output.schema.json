@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "script.output.schema.json",
+  "title": "marketing:script output",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "script"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "needs_input",
+        "blocked"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "estimated_seconds": {
+          "type": "number"
+        },
+        "hook": {
+          "type": "string",
+          "description": "First line, verbatim."
+        },
+        "beats": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/beat"
+          }
+        },
+        "cta": {
+          "type": "object",
+          "properties": {
+            "line": {
+              "type": "string"
+            },
+            "product": {
+              "type": "string"
+            },
+            "pain_named": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "line"
+          ],
+          "additionalProperties": false
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/claim"
+          }
+        },
+        "preparation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What to prepare before recording."
+        },
+        "visual_alternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "tradeoff": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "tradeoff"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "beat_id": {
+                "type": "string"
+              },
+              "change": {
+                "type": "string"
+              },
+              "because": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "change",
+              "because"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Revise mode: what changed and which critique issue it answers."
+        }
+      },
+      "required": [
+        "title",
+        "format",
+        "estimated_seconds",
+        "hook",
+        "beats",
+        "cta",
+        "claims",
+        "preparation"
+      ],
+      "additionalProperties": false
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/missing_input"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "status",
+    "result",
+    "missing_inputs",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

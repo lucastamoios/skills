@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "critique.input.schema.json",
+  "title": "marketing:critique input",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "critique"
+    },
+    "language": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "script": {
+          "type": "object",
+          "description": "Result of marketing:script."
+        },
+        "angle": {
+          "type": "object"
+        },
+        "reference_analysis": {
+          "type": "object"
+        },
+        "creator": {
+          "$ref": "common.schema.json#/$defs/creator"
+        },
+        "product": {
+          "$ref": "common.schema.json#/$defs/product"
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/criterion"
+          },
+          "description": "Override or extend the built-in expert criteria."
+        },
+        "round": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_rounds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "offer": {
+          "type": "object",
+          "description": "Optional: result of marketing:offer, to judge the CTA."
+        }
+      },
+      "required": [
+        "script"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "input"
+  ],
+  "additionalProperties": false
+}

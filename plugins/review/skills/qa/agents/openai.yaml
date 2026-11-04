@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA Review"
+  short_description: "Set up Docker and exercise mapped and exploratory QA"
+  default_prompt: "Use $review:qa to prepare an isolated Docker environment, exercise the real interface, and report scenario evidence or substantiated setup blockers."

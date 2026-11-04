@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dev"
+  short_description: "Coordinate development through independent stage agents"
+  default_prompt: "Use $dev to coordinate this development request with explicit inputs, outputs, and configured models."

@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "module": "basic",
+      "questions": [
+        {
+          "key": "user.display_name",
+          "question": "What should the assistant call you?",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user.language",
+          "question": "Which language should it use?",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user.timezone",
+          "question": "Which IANA timezone should it use?",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "paths.brain",
+          "question": "Where is your private context directory?",
+          "type": "string",
+          "required": true
+        },
+        {
+          "key": "user.technical_knowledge",
+          "question": "Do you have a private note describing your technical experience for explanations?",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "module": "work",
+      "questions": [
+        {
+          "key": "work.github_repository",
+          "question": "Which repository should work helpers use?",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "work.github_login",
+          "question": "Which GitHub identity is yours?",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "work.issue_prefix",
+          "question": "Which issue prefix does your team use?",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "work.requester_aliases",
+          "question": "Which requester aliases should be recognized?",
+          "type": "object",
+          "required": false
+        },
+        {
+          "key": "work.requester_order",
+          "question": "Does your team have an explicit requester precedence?",
+          "type": "list",
+          "required": false
+        },
+        {
+          "key": "work.direction_notes",
+          "question": "Which private notes explain your team and current direction?",
+          "type": "list",
+          "required": false
+        }
+      ]
+    },
+    {
+      "module": "transcripts",
+      "questions": [
+        {
+          "key": "contexts.clean",
+          "question": "Which private glossary and confirmed speaker mapping files should this module read?",
+          "type": "list",
+          "required": false
+        }
+      ]
+    },
+    {
+      "module": "marketing",
+      "questions": [
+        {
+          "key": "marketing.root",
+          "question": "Where are your creator profiles and offers?",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "marketing.default_creator",
+          "question": "Which creator is the default?",
+          "type": "string",
+          "required": false
+        },
+        {
+          "key": "marketing.expert_notes",
+          "question": "Which private document contains your editorial criteria?",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "module": "timesheets",
+      "questions": [
+        {
+          "key": "timesheet.profile",
+          "question": "Where is your private timesheet profile with confirmed schedule and entry/exit equipment prefixes?",
+          "type": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "module": "integrations",
+      "questions": [
+        {
+          "key": "execution.model_policy",
+          "question": "Which private model-policy file should coordinators use?",
+          "type": "string",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "secret_policy": "Ask for environment-variable names or vault references only. Never collect or print secret values in chat.",
+  "missing_values": "Ask only when the selected module needs the value. Optional modules can remain unconfigured."
+}

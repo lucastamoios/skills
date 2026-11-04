@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Icon"
+  short_description: "Prepare canonical icons for 1Password"
+  default_prompt: "Use $brand to find and save a canonical brand icon for 1Password."

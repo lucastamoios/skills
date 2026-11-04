@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dead Code"
+  short_description: "Remove dead code with Graft and planning evidence"
+  default_prompt: "Use $review:dead-code with an explicit input file and output path, or prepare an independent agent for this change."

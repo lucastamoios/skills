@@ -1,0 +1,8 @@
+{
+  "name": "marketing",
+  "version": "0.1.0",
+  "description": "Short-video marketing: an orchestrator (run) plus self-contained workers with structured JSON input and output: reference analysis, case questions, angle, offer, script, and critique.",
+  "author": {
+    "name": "Lucas Aguiar"
+  }
+}

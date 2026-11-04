@@ -1,0 +1,4 @@
+interface:
+  display_name: "Start Obsidian Task"
+  short_description: "Start a focused task from the brain vault"
+  default_prompt: "Use $start to match or create an Obsidian task and move it to In Progress."

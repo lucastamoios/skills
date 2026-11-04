@@ -1,0 +1,8 @@
+{
+  "id": "agent-skills-public",
+  "version": "0.1.0-preview",
+  "license": "UNLICENSED",
+  "skills": 79,
+  "runtime": "Python 3.10+",
+  "network_required_for_setup": false
+}

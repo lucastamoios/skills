@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Critique"
+  short_description: "marketing/v1 worker: critique"
+  default_prompt: "Use $marketing:critique with an input JSON (contract marketing/v1) and return only the output JSON."

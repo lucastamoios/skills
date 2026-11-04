@@ -1,0 +1,33 @@
+{
+  "name": "marketing",
+  "version": "0.1.0",
+  "description": "Short-video marketing: an orchestrator (run) plus self-contained workers with structured JSON input and output: reference analysis, case questions, angle, offer, script, and critique.",
+  "author": {
+    "name": "Lucas Aguiar"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Marketing",
+    "shortDescription": "Short-video scripts with structured workers",
+    "longDescription": "Analyze why a reference video worked, ask for a concrete case, choose an angle, write the script beat by beat, and critique it with the expert's criteria. Every skill takes and returns JSON under the marketing/v1 contract.",
+    "developerName": "Lucas Aguiar",
+    "category": "Productivity",
+    "capabilities": [
+      "Orchestrated video flow",
+      "Reference video analysis",
+      "Case-eliciting questions",
+      "Video angles",
+      "Offer and CTA (One Belief + 10 questions)",
+      "Script writing and revision",
+      "Script critique"
+    ],
+    "defaultPrompt": [
+      "Make my next video script.",
+      "Explain why this reference video worked.",
+      "Ask me questions that get a concrete story for my next video.",
+      "Turn this case into video angles.",
+      "Write a 30 second script from this angle.",
+      "Critique this script with the expert's criteria."
+    ]
+  }
+}

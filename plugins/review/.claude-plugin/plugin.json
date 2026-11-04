@@ -1,0 +1,8 @@
+{
+  "name": "review",
+  "version": "0.2.7",
+  "description": "Independent review agents with explicit inputs, outputs, models, and evidence consolidation.",
+  "author": {
+    "name": "Lucas Aguiar"
+  }
+}

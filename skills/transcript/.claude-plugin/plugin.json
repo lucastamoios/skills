@@ -1,0 +1,9 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "transcript",
+  "version": "0.3.2",
+  "description": "Turn noisy meeting transcripts into publication-ready conversational prose with strict fidelity preservation.",
+  "author": {
+    "name": "Lucas Aguiar"
+  }
+}

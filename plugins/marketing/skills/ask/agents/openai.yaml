@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Ask"
+  short_description: "marketing/v1 worker: ask"
+  default_prompt: "Use $marketing:ask with an input JSON (contract marketing/v1) and return only the output JSON."

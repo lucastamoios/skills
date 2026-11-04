@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Review"
+  short_description: "Dispatch review agents with explicit file contracts"
+  default_prompt: "Use $review:run to coordinate independent review agents for this change with explicit inputs, outputs, models, and consolidation."

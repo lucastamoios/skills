@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explain PR or Branch"
+  short_description: "Trace a code change from input to outcome"
+  default_prompt: "Use $explain to explain this PR or branch in numbered runtime order with exact code locations."

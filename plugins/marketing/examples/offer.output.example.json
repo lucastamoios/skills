@@ -1,0 +1,125 @@
+{
+  "contract": "marketing/v1",
+  "skill": "offer",
+  "status": "ok",
+  "result": {
+    "one_belief": "One clear action per card helps organize a desk, using the fictional Three Cards workshop.",
+    "answers": [
+      {
+        "id": "difference",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "The fictional workshop uses three reusable cards beside objects on a desk.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "why_care",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "The fictional audience wants a visible next action instead of a long list.",
+        "strength": "weak",
+        "to_strengthen": "Collect a verified example before using this claim in real content.",
+        "claims": []
+      },
+      {
+        "id": "how_true",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "This example demonstrates the cards; it provides no customer-results evidence.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "problem_mechanism",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "An ambiguous list hides which action to take first.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "enemy",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "Unclear instructions that leave the next action implicit.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "why_now",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "The example reader is preparing a new workspace.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "why_trust",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "This fixture makes no real claim about the creator’s career or experience.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "solution_mechanism",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "Choose an object, write one action, and check the card after completing it.",
+        "strength": "weak",
+        "to_strengthen": "Collect a verified example before using this claim in real content.",
+        "claims": []
+      },
+      {
+        "id": "how_start",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "Open the fictional example page and download the three-card template.",
+        "strength": "weak",
+        "claims": [],
+        "to_strengthen": "Collect a verified example before using this claim in real content."
+      },
+      {
+        "id": "what_to_lose",
+        "question": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "answer": "Without a clear action, the example task remains undecided.",
+        "strength": "weak",
+        "to_strengthen": "Collect a verified example before using this claim in real content.",
+        "claims": []
+      }
+    ],
+    "cta_lines": [
+      {
+        "angle": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "line": "Fictional desk checklist example. Replace this field with verified input for a real creator."
+      },
+      {
+        "angle": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "line": "Fictional desk checklist example. Replace this field with verified input for a real creator."
+      },
+      {
+        "angle": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "line": "Fictional desk checklist example. Replace this field with verified input for a real creator."
+      },
+      {
+        "angle": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "line": "Fictional desk checklist example. Replace this field with verified input for a real creator."
+      },
+      {
+        "angle": "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+        "line": "Fictional desk checklist example. Replace this field with verified input for a real creator."
+      }
+    ],
+    "tensions": [
+      "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+      "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+      "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+      "Fictional desk checklist example. Replace this field with verified input for a real creator."
+    ],
+    "next_steps": [
+      "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+      "Fictional desk checklist example. Replace this field with verified input for a real creator.",
+      "Fictional desk checklist example. Replace this field with verified input for a real creator."
+    ]
+  },
+  "missing_inputs": [],
+  "warnings": []
+}

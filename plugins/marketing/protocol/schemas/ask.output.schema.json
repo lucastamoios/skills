@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ask.output.schema.json",
+  "title": "marketing:ask output",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "ask"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "needs_input",
+        "blocked"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "question": {
+                "type": "string",
+                "description": "One question, asking for a specific past event."
+              },
+              "elicits": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "scene",
+                    "before_after",
+                    "number",
+                    "mistake",
+                    "decision",
+                    "proof",
+                    "demonstrable_steps"
+                  ]
+                }
+              },
+              "why": {
+                "type": "string",
+                "description": "Which part of the creator's brand or goal it targets."
+              },
+              "likely_job": {
+                "$ref": "common.schema.json#/$defs/job"
+              },
+              "follow_ups": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Short follow-ups if the answer comes back abstract."
+              }
+            },
+            "required": [
+              "id",
+              "question",
+              "elicits",
+              "why",
+              "follow_ups"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "questions"
+      ],
+      "additionalProperties": false
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/missing_input"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "status",
+    "result",
+    "missing_inputs",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

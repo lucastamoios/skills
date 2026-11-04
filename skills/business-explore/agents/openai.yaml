@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explorar um negócio"
+  short_description: "Explore problemas, clientes e caminhos de negócio."
+  default_prompt: "Use $business-explore para pensar comigo sobre esta ideia de negócio."

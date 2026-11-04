@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Find correctness, security, and test defects"
+  default_prompt: "Use $review:code with an explicit input file and output path, or prepare an independent agent for this change."

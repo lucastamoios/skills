@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "module": "basic",
+      "questions": [
+        {
+          "key": "user.display_name",
+          "question": "What should the assistant call you?"
+        },
+        {
+          "key": "user.language",
+          "question": "Which language should it use?"
+        },
+        {
+          "key": "user.timezone",
+          "question": "Which IANA timezone should it use?"
+        },
+        {
+          "key": "paths.brain",
+          "question": "Where is your private context directory?"
+        },
+        {
+          "key": "paths.skills",
+          "question": "Where are the shared skills installed?"
+        },
+        {
+          "key": "user.technical_knowledge",
+          "question": "Do you have a private note describing your technical experience for explanations?"
+        }
+      ]
+    },
+    {
+      "module": "work",
+      "questions": [
+        {
+          "key": "work.github_repository",
+          "question": "Which repository should work helpers use?"
+        },
+        {
+          "key": "work.github_login",
+          "question": "Which GitHub identity is yours?"
+        },
+        {
+          "key": "work.issue_prefix",
+          "question": "Which issue prefix does your team use?"
+        },
+        {
+          "key": "work.requester_aliases",
+          "question": "Which requester aliases should be recognized?"
+        },
+        {
+          "key": "work.requester_order",
+          "question": "Does your team have an explicit requester precedence?"
+        },
+        {
+          "key": "work.direction_notes",
+          "question": "Which private notes explain your team and current direction?"
+        }
+      ]
+    },
+    {
+      "module": "transcripts",
+      "questions": [
+        {
+          "key": "contexts.clean",
+          "question": "Which private glossary and confirmed speaker mapping files should this module read?"
+        }
+      ]
+    },
+    {
+      "module": "marketing",
+      "questions": [
+        {
+          "key": "marketing.root",
+          "question": "Where are your creator profiles and offers?"
+        },
+        {
+          "key": "marketing.default_creator",
+          "question": "Which creator is the default?"
+        },
+        {
+          "key": "marketing.expert_notes",
+          "question": "Which private document contains your editorial criteria?"
+        }
+      ]
+    },
+    {
+      "module": "timesheets",
+      "questions": [
+        {
+          "key": "timesheet.profile",
+          "question": "Where is your private timesheet profile with confirmed schedule and entry/exit equipment prefixes?"
+        }
+      ]
+    },
+    {
+      "module": "integrations",
+      "questions": [
+        {
+          "key": "integrations",
+          "question": "Which optional services are available, and where are their contracts and procedures?"
+        },
+        {
+          "key": "execution.model_policy",
+          "question": "Which private model-policy file should coordinators use?"
+        }
+      ]
+    }
+  ],
+  "secret_policy": "Ask for environment-variable names or vault references only. Never collect or print secret values in chat.",
+  "missing_values": "Ask only when the selected module needs the value. Optional modules can remain unconfigured."
+}

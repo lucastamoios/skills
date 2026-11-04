@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "status": "unconfigured",
+  "description": "Use profile.execution.model_policy or explicit user assignments. Configure models and efforts before dispatch.",
+  "assignments": {}
+}

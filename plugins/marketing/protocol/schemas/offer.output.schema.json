@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "offer.output.schema.json",
+  "title": "marketing:offer output",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "offer"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "needs_input",
+        "blocked"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "one_belief": {
+          "type": "string",
+          "description": "The single belief that, if the viewer accepts it, makes the offer the obvious next step. Shape: X is the key to Y, and that is only possible through Z (the product's mechanism)."
+        },
+        "answers": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "enum": [
+                  "difference",
+                  "why_care",
+                  "how_true",
+                  "problem_mechanism",
+                  "enemy",
+                  "why_now",
+                  "why_trust",
+                  "solution_mechanism",
+                  "how_start",
+                  "what_to_lose"
+                ]
+              },
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string",
+                "description": "In the creator's voice, short and spoken."
+              },
+              "strength": {
+                "enum": [
+                  "strong",
+                  "weak",
+                  "missing"
+                ],
+                "description": "missing = no material supports an answer."
+              },
+              "claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/claim"
+                }
+              },
+              "to_strengthen": {
+                "type": "string",
+                "description": "What fact, case or decision would make this answer strong."
+              }
+            },
+            "required": [
+              "id",
+              "question",
+              "answer",
+              "strength"
+            ]
+          }
+        },
+        "cta_lines": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "angle": {
+                "type": "string",
+                "description": "Which answer this CTA leans on (enemy, why_now, what_to_lose...)."
+              },
+              "line": {
+                "type": "string",
+                "description": "Spoken CTA, at most 25 words, names the pain or desire then the product and where to find it."
+              }
+            },
+            "required": [
+              "angle",
+              "line"
+            ]
+          }
+        },
+        "tensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Contradictions between the offer and the creator's brand, constraints or product data."
+        },
+        "next_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ordered actions that would strengthen the offer, e.g. collect a case."
+        }
+      },
+      "required": [
+        "one_belief",
+        "answers",
+        "cta_lines",
+        "tensions"
+      ]
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/missing_input"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "status",
+    "result",
+    "missing_inputs",
+    "warnings"
+  ]
+}

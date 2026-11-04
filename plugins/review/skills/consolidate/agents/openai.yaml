@@ -1,0 +1,4 @@
+interface:
+  display_name: "Consolidate Review"
+  short_description: "Consolidate evidence and prepare PR comments"
+  default_prompt: "Use $review:consolidate to consolidate these review findings or prepare editable PR comments, then publish the finalized review when I request it."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Review"
+  short_description: "Assess test value, business rules, and flakiness"
+  default_prompt: "Use $review:tests with an explicit input file and output path, or prepare an independent agent for this change."

@@ -1,0 +1,250 @@
+<div id="__MAP_ROOT__">
+  <h2 data-map-title></h2>
+  <p class="text-small" data-map-source></p>
+  <details><summary>Source details</summary><pre class="map-provenance" data-map-provenance></pre></details>
+  <div class="map-diagram">
+    <svg class="map-connectors" role="img" aria-label="Domain relationships"></svg>
+    <div class="map-domains"></div>
+  </div>
+  <div class="map-selection" aria-live="polite">
+    <h3 data-selection-title></h3>
+    <div class="viz-row" data-modules></div>
+    <div class="viz-row" data-functions></div>
+  </div>
+  <section data-detail hidden></section>
+</div>
+<style>
+#__MAP_ROOT__ { color: var(--foreground); }
+#__MAP_ROOT__ .map-diagram { position: relative; margin-block: 1.5rem; }
+#__MAP_ROOT__ .map-domains { display: grid; gap: 4rem 2rem; position: relative; align-items: center; }
+#__MAP_ROOT__ .map-domain { min-width: 0; display: flex; justify-content: center; }
+#__MAP_ROOT__ .map-connectors { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; color: var(--muted-foreground); }
+#__MAP_ROOT__ .map-connectors path { stroke: var(--border); fill: none; stroke-width: 1.5; }
+#__MAP_ROOT__ .map-connectors marker path { stroke: none; fill: currentColor; }
+#__MAP_ROOT__ .map-connectors text { fill: var(--muted-foreground); font-size: 12px; }
+#__MAP_ROOT__ .map-selection { display: grid; gap: .75rem; margin-block: 1rem; }
+#__MAP_ROOT__ [data-modules], #__MAP_ROOT__ [data-functions] { min-width: 0; }
+#__MAP_ROOT__ .map-diff { border-collapse: collapse; width: 100%; }
+#__MAP_ROOT__ .map-diff th { text-align: start; font-weight: 500; padding: .5rem; border-bottom: 1px solid var(--border); }
+#__MAP_ROOT__ .map-diff td { padding: .1rem .5rem; vertical-align: top; }
+#__MAP_ROOT__ .map-diff .map-line { text-align: end; color: var(--muted-foreground); user-select: none; width: 1%; }
+#__MAP_ROOT__ .map-diff .map-code { white-space: pre; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+#__MAP_ROOT__ .map-diff .map-sign { white-space: pre; width: 1%; }
+#__MAP_ROOT__ .map-diff tr[data-kind="added"] { background: color-mix(in srgb, var(--green) 13%, transparent); }
+#__MAP_ROOT__ .map-diff tr[data-kind="deleted"] { background: color-mix(in srgb, var(--red) 13%, transparent); }
+#__MAP_ROOT__ .map-diff tr[data-selected-part="true"] .map-code { box-shadow: inset 3px 0 var(--ring); }
+#__MAP_ROOT__ .map-part { display: grid; gap: .4rem; margin-block: .75rem; max-width: 65ch; white-space: normal; }
+#__MAP_ROOT__ .map-part p { margin: 0; }
+#__MAP_ROOT__ .map-locations, #__MAP_ROOT__ [data-map-source] { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  #__MAP_ROOT__ .map-domains { grid-template-columns: minmax(0, 1fr) !important; }
+  #__MAP_ROOT__ .map-domain { grid-area: auto !important; }
+}
+</style>
+<script type="application/json" id="__MAP_ROOT__-data">__MAP_DATA__</script>
+<script>
+(() => {
+  const root = document.getElementById('__MAP_ROOT__');
+  const data = JSON.parse(document.getElementById('__MAP_ROOT__-data').textContent);
+  const query = selector => root.querySelector(selector);
+  const modules = new Map(data.modules.map(module => [module.id, module]));
+  const domains = new Map(data.domains.map(domain => [domain.id, domain]));
+  const domainButtons = new Map();
+  const state = { domain: null, module: null, function: null, part: null };
+  const el = (tag, content, className) => {
+    const element = document.createElement(tag);
+    if (content !== undefined) element.textContent = content;
+    if (className) element.className = className;
+    return element;
+  };
+  function button(label, onClick, selected = false) {
+    const result = el('button', label, 'btn');
+    result.type = 'button';
+    result.setAttribute('aria-pressed', String(selected));
+    result.addEventListener('click', onClick);
+    return result;
+  }
+  function save() {
+    const api = window.openai;
+    if (api && typeof api.setWidgetState === 'function') {
+      Promise.resolve(api.setWidgetState({ modelContent: { title: data.title, ...state }, privateContent: null })).catch(() => {});
+    }
+  }
+  function selectDomain(id, persist = true) {
+    state.domain = id;
+    state.module = state.function = state.part = null;
+    renderSelection();
+    if (persist) save();
+  }
+  function renderSelection() {
+    domainButtons.forEach((button, id) => button.setAttribute('aria-pressed', String(id === state.domain)));
+    const domain = domains.get(state.domain);
+    query('[data-selection-title]').textContent = domain ? domain.label : 'Select a domain';
+    const moduleList = query('[data-modules]');
+    const functionList = query('[data-functions]');
+    moduleList.replaceChildren();
+    functionList.replaceChildren();
+    query('[data-detail]').replaceChildren();
+    query('[data-detail]').hidden = true;
+    if (!domain) return;
+    if (!domain.module_ids.length) moduleList.append(el('p', 'No changed modules in this domain.', 'text-small'));
+    domain.module_ids.forEach(id => {
+      const module = modules.get(id);
+      const control = button(`${module.path} · ${module.change_kind}`, () => {
+        state.module = id;
+        state.function = state.part = null;
+        renderSelection();
+        save();
+      }, state.module === id);
+      moduleList.append(control);
+    });
+    const module = modules.get(state.module);
+    if (!module || !domain.module_ids.includes(module.id)) return;
+    module.functions.forEach(fn => {
+      functionList.append(button(`${fn.name} · ${fn.change_kind}`, () => {
+        state.function = fn.id;
+        state.part = null;
+        renderSelection();
+        save();
+      }, state.function === fn.id));
+    });
+    const fn = module.functions.find(fn => fn.id === state.function);
+    if (fn) renderDetail(module, fn);
+  }
+  function renderDetail(module, fn) {
+    const detail = query('[data-detail]');
+    detail.hidden = false;
+    detail.append(el('h3', fn.name), el('p', fn.business_rule));
+    const locations = el('p', undefined, 'map-locations text-small text-muted');
+    const describe = (label, side) => side && side.source ? `${label}: ${side.path}:${side.start_line}` : `${label}: unavailable`;
+    locations.textContent = `${describe('Before', fn.before)} → ${describe('After', fn.after)}`;
+    detail.append(locations);
+    const wrapper = el('div', undefined, 'table-responsive');
+    const table = el('table', undefined, 'map-diff');
+    const caption = el('caption', `${fn.name}: complete source diff. Minus indicates removed code; plus indicates added code.`, 'sr-only');
+    const head = el('thead');
+    const headings = el('tr');
+    ['Before', 'After', '', 'Complete source'].forEach(label => {
+      const th = el('th', label);
+      th.scope = 'col';
+      headings.append(th);
+    });
+    head.append(headings);
+    const body = el('tbody');
+    const explained = new Set();
+    fn.diff_rows.forEach(row => {
+      if (row.kind !== 'context' || !fn.diff_rows.some(item => item.kind !== 'context')) row.parts.forEach(id => {
+        if (explained.has(id)) return;
+        explained.add(id);
+        const part = fn.parts.find(part => part.id === id);
+        const annotation = el('tr');
+        const cell = el('td');
+        cell.colSpan = 4;
+        const section = el('div', undefined, 'map-part');
+        const control = button(part.title, () => {
+          state.part = state.part === part.id ? null : part.id;
+          renderSelection();
+          save();
+        }, state.part === part.id);
+        const label = prefix => part[`${prefix}_start`] == null ? '' : `${prefix === 'old' ? 'before' : 'after'} ${part[`${prefix}_start`]}–${part[`${prefix}_end`]}`;
+        const actions = el('div');
+        actions.append(control);
+        section.append(actions, el('p', part.explanation), el('p', [label('old'), label('new')].filter(Boolean).join(' · ') + ' (relative lines)', 'text-small text-muted'));
+        cell.append(section);
+        annotation.append(cell);
+        body.append(annotation);
+      });
+      const tr = el('tr');
+      tr.dataset.kind = row.kind;
+      tr.dataset.selectedPart = String(row.parts.includes(state.part));
+      tr.append(el('td', row.old_line == null ? '' : String(row.old_line), 'map-line tabular-nums'),
+                el('td', row.new_line == null ? '' : String(row.new_line), 'map-line tabular-nums'),
+                el('td', row.kind === 'added' ? '+' : row.kind === 'deleted' ? '−' : ' ', 'map-sign'),
+                el('td', row.text, 'map-code'));
+      body.append(tr);
+    });
+    table.append(caption, head, body);
+    wrapper.append(table);
+    detail.append(wrapper);
+    const endings = fn.trailing_newline;
+    if (endings.before === false || endings.after === false) {
+      detail.append(el('p', [endings.before === false ? 'Before has no trailing newline.' : '', endings.after === false ? 'After has no trailing newline.' : ''].filter(Boolean).join(' '), 'text-small text-muted'));
+    }
+  }
+  const svg = query('.map-connectors');
+  const svgNS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attributes = {}) {
+    const element = document.createElementNS(svgNS, tag);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  }
+  function drawEdges() {
+    const diagram = query('.map-diagram');
+    const bounds = diagram.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+    svg.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
+    svg.replaceChildren();
+    const defs = svgEl('defs');
+    const marker = svgEl('marker', { id: '__MAP_ROOT__-arrow', viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 6, markerHeight: 6, orient: 'auto-start-reverse' });
+    marker.append(svgEl('path', { d: 'M 0 0 L 10 5 L 0 10 Z' }));
+    defs.append(marker);
+    svg.append(defs);
+    const description = svgEl('desc');
+    description.textContent = data.edges.map(edge => `${domains.get(edge.from).label} → ${domains.get(edge.to).label}: ${edge.label}`).join('; ');
+    svg.append(description);
+    data.edges.forEach(edge => {
+      const a = domainButtons.get(edge.from).getBoundingClientRect();
+      const b = domainButtons.get(edge.to).getBoundingClientRect();
+      const ac = { x: a.left + a.width / 2 - bounds.left, y: a.top + a.height / 2 - bounds.top };
+      const bc = { x: b.left + b.width / 2 - bounds.left, y: b.top + b.height / 2 - bounds.top };
+      const vertical = Math.abs(bc.y - ac.y) > Math.abs(bc.x - ac.x);
+      const direction = vertical ? Math.sign(bc.y - ac.y) : Math.sign(bc.x - ac.x);
+      let x1 = ac.x, y1 = ac.y, x2 = bc.x, y2 = bc.y;
+      if (vertical) { y1 += direction * a.height / 2; y2 -= direction * b.height / 2; }
+      else { x1 += direction * a.width / 2; x2 -= direction * b.width / 2; }
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+      const d = vertical ? `M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}` : `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      svg.append(svgEl('path', { d, 'marker-end': 'url(#__MAP_ROOT__-arrow)' }));
+      const label = svgEl('text', { x: mx, y: my - 6, 'text-anchor': 'middle' });
+      label.textContent = edge.label;
+      svg.append(label);
+    });
+  }
+  query('[data-map-title]').textContent = data.title;
+  const shortRef = value => value.replace(/ in snapshot .*/, '').replace(/\b[0-9a-f]{40,64}\b/gi, hash => hash.slice(0, 12));
+  const comparison = data.source.head.startsWith(data.source.base + ' + local changes')
+    ? `${shortRef(data.source.base)} → local changes`
+    : `${shortRef(data.source.base)} → ${shortRef(data.source.head)}`;
+  query('[data-map-source]').textContent = `Comparison: ${comparison}`;
+  query('[data-map-provenance]').textContent = JSON.stringify(data.source, null, 2);
+  const grid = query('.map-domains');
+  grid.style.gridTemplateColumns = `repeat(${Math.max(...data.domains.map(domain => domain.column)) + 1}, minmax(0, 1fr))`;
+  [...data.domains].sort((a, b) => a.row - b.row || a.column - b.column).forEach(domain => {
+    const holder = el('div', undefined, 'map-domain');
+    holder.style.gridRow = domain.row + 1;
+    holder.style.gridColumn = domain.column + 1;
+    const control = button(domain.label, () => selectDomain(domain.id));
+    holder.append(control);
+    domainButtons.set(domain.id, control);
+    grid.append(holder);
+  });
+  function restore(saved) {
+    const candidate = saved && saved.modelContent;
+    state.domain = candidate && candidate.title === data.title && domains.has(candidate.domain) ? candidate.domain : data.domains[0].id;
+    const domain = domains.get(state.domain);
+    state.module = candidate && domain.module_ids.includes(candidate.module) ? candidate.module : null;
+    const module = modules.get(state.module);
+    const fn = module && module.functions.find(fn => candidate && fn.id === candidate.function);
+    state.function = fn ? fn.id : null;
+    state.part = fn && fn.parts.some(part => part.id === candidate.part) ? candidate.part : null;
+    renderSelection();
+  }
+  restore(window.openai && window.openai.widgetState);
+  window.addEventListener('openai:set_globals', event => {
+    if (event.detail && event.detail.globals && event.detail.globals.widgetState) restore(event.detail.globals.widgetState);
+  });
+  new ResizeObserver(drawEdges).observe(query('.map-diagram'));
+  drawEdges();
+  if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons({ attrs: { width: 16, height: 16 } });
+})();
+</script>

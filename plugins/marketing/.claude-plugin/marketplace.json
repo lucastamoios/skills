@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "marketing-local",
+  "description": "Local content-generation skills for Claude and Codex.",
+  "owner": {
+    "name": "Lucas Aguiar"
+  },
+  "plugins": [
+    {
+      "name": "marketing",
+      "description": "Structured workers for short-video reference analysis, angles, scripts, and critique.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+:root {
+  color-scheme: light;
+  --foreground: #17212f;
+  --muted-foreground: #405066;
+  --background: #ffffff;
+  --surface: #f3f6fa;
+  --border: #9aaabd;
+  --ring: #0758b8;
+  --green: #16783c;
+  --red: #b32626;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--foreground); font: 16px/1.55 system-ui, sans-serif; }
+main { max-width: 1440px; margin: auto; padding: 2rem clamp(1rem, 4vw, 3rem); }
+h2 { margin: 0 0 .5rem; font-size: 1.7rem; line-height: 1.25; }
+h3 { margin: 1rem 0 .5rem; line-height: 1.3; }
+p { margin: .5rem 0 1rem; }
+.text-small { font-size: .875rem; }
+.text-muted { color: var(--muted-foreground); }
+.viz-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+.btn { appearance: none; font: inherit; line-height: 1.35; color: var(--foreground); background: var(--surface); border: 1px solid var(--border); border-radius: .5rem; padding: .6rem .85rem; cursor: pointer; overflow-wrap: anywhere; text-align: left; }
+.btn:hover { border-color: var(--ring); }
+.btn[aria-pressed="true"] { background: #e1edff; border-color: var(--ring); color: #063e83; box-shadow: inset 0 0 0 1px var(--ring); font-weight: 600; }
+.btn:focus-visible, summary:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+.table-responsive { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: .5rem; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
+.map-code { color: var(--foreground); font-size: .875rem; }
+details { margin: .5rem 0 1rem; }
+summary { cursor: pointer; font-weight: 600; }
+.map-provenance { margin-top: .5rem; padding: .75rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: .5rem; white-space: pre-wrap; overflow-wrap: anywhere; font: .875rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }

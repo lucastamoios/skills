@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auto-rename"
+  short_description: "Rename a Codex task by work status"
+  default_prompt: "Rename this Codex task using its current work status and outcome."

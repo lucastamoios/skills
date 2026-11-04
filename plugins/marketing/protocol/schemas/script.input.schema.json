@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "script.input.schema.json",
+  "title": "marketing:script input",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "script"
+    },
+    "language": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "generate",
+            "revise"
+          ]
+        },
+        "creator": {
+          "$ref": "common.schema.json#/$defs/creator"
+        },
+        "product": {
+          "$ref": "common.schema.json#/$defs/product"
+        },
+        "angle": {
+          "type": "object",
+          "description": "One angle from marketing:angle."
+        },
+        "material": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/material"
+          }
+        },
+        "reference_analysis": {
+          "type": "object"
+        },
+        "target_seconds": {
+          "type": "number"
+        },
+        "format_preference": {
+          "type": "string",
+          "description": "e.g. talking head with screen, dialogue, voice-over"
+        },
+        "previous_script": {
+          "type": "object",
+          "description": "Required in revise mode: result of marketing:script."
+        },
+        "critique": {
+          "type": "object",
+          "description": "Required in revise mode: result of marketing:critique."
+        },
+        "expert_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "offer": {
+          "type": "object",
+          "description": "Optional: result of marketing:offer. Source for the CTA."
+        }
+      },
+      "required": [
+        "mode",
+        "creator",
+        "angle"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "input"
+  ],
+  "additionalProperties": false
+}

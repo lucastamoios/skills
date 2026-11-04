@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Run"
+  short_description: "Orchestrates the marketing workers from a plain request"
+  default_prompt: "Use $marketing:run to turn my request into the right marketing workers, using my Marketing vault."

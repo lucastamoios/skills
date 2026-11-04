@@ -1,0 +1,4 @@
+interface:
+  display_name: "Risk Review"
+  short_description: "Assess production boundaries and release risk"
+  default_prompt: "Use $review:risk with an explicit input file and output path, or prepare an independent agent for this change."

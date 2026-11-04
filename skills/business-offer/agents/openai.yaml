@@ -1,0 +1,4 @@
+interface:
+  display_name: "Definir uma oferta"
+  short_description: "Formule uma oferta clara e testável para clientes."
+  default_prompt: "Use $business-offer para definir o que oferecer e a quem."

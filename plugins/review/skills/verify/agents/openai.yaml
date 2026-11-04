@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Review Findings"
+  short_description: "Confirm or refute review findings with evidence"
+  default_prompt: "Use $review:verify to independently check these review findings and report supported, refuted, or unresolved results before consolidation."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Angle"
+  short_description: "marketing/v1 worker: angle"
+  default_prompt: "Use $marketing:angle with an input JSON (contract marketing/v1) and return only the output JSON."

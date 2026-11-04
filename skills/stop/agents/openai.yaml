@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stop Obsidian Task"
+  short_description: "Close or pause the active brain vault task"
+  default_prompt: "Use $stop to record progress and move the active Obsidian task to Done or To Do."

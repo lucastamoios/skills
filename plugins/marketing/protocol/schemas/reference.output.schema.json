@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reference.output.schema.json",
+  "title": "marketing:reference output",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "reference"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "needs_input",
+        "blocked"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "One sentence: what the video does and why it worked."
+        },
+        "reason_why": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "mechanism": {
+                "$ref": "common.schema.json#/$defs/mechanism"
+              },
+              "evidence": {
+                "type": "string",
+                "description": "Quote or timestamped visual."
+              },
+              "at_seconds": {
+                "type": "number"
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "expert_notes",
+                  "observed",
+                  "inference"
+                ]
+              }
+            },
+            "required": [
+              "mechanism",
+              "evidence",
+              "weight",
+              "source"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "hook": {
+          "type": "object",
+          "properties": {
+            "seconds": {
+              "type": "number"
+            },
+            "line": {
+              "type": "string"
+            },
+            "visual": {
+              "type": "string"
+            },
+            "type": {
+              "$ref": "common.schema.json#/$defs/mechanism"
+            },
+            "promise": {
+              "type": "string",
+              "description": "What the viewer is told they will get."
+            }
+          },
+          "required": [
+            "line",
+            "promise"
+          ],
+          "additionalProperties": false
+        },
+        "jobs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "job": {
+                "$ref": "common.schema.json#/$defs/job"
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "evidence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "job",
+              "weight",
+              "evidence"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "structure": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "number"
+              },
+              "end": {
+                "type": "number"
+              },
+              "function": {
+                "type": "string"
+              },
+              "what_happens": {
+                "type": "string"
+              },
+              "why_it_matters": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "function",
+              "what_happens",
+              "why_it_matters"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "execution_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "What a creator must be able to show or do to reproduce the mechanism (e.g. a visible result, a screen, before/after material)."
+        },
+        "transferable_pattern": {
+          "type": "string",
+          "description": "The mechanism stated without the niche, ready to apply elsewhere."
+        },
+        "not_transferable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Elements tied to this niche or creator that should not be copied."
+        },
+        "success": {
+          "type": "object",
+          "properties": {
+            "views_per_follower": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "summary",
+        "reason_why",
+        "hook",
+        "jobs",
+        "structure",
+        "execution_requirements",
+        "transferable_pattern"
+      ],
+      "additionalProperties": false
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/missing_input"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "status",
+    "result",
+    "missing_inputs",
+    "warnings"
+  ],
+  "additionalProperties": false
+}

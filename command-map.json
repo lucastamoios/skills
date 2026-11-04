@@ -1,0 +1,22 @@
+{
+  "marketing:angle": "marketing-angle",
+  "marketing:ask": "marketing-ask",
+  "marketing:critique": "marketing-critique",
+  "marketing:offer": "marketing-offer",
+  "marketing:reference": "marketing-reference",
+  "marketing:run": "marketing-run",
+  "marketing:script": "marketing-script",
+  "review:code": "review-code",
+  "review:consolidate": "review-consolidate",
+  "review:dead-code": "review-dead-code",
+  "review:intent": "review-intent",
+  "review:map": "review-map",
+  "review:paths": "review-paths",
+  "review:qa": "review-qa",
+  "review:risk": "review-risk",
+  "review:run": "review-run",
+  "review:tests": "review-tests",
+  "review:verify": "review-verify",
+  "review:walkthrough": "review-walkthrough",
+  "transcript:clean": "transcript-clean"
+}

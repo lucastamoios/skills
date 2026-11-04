@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Script"
+  short_description: "marketing/v1 worker: script"
+  default_prompt: "Use $marketing:script with an input JSON (contract marketing/v1) and return only the output JSON."
