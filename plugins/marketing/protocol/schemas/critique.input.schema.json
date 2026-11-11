@@ -20,6 +20,13 @@
           "type": "object",
           "description": "Result of marketing:script."
         },
+        "material": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/material"
+          },
+          "description": "The creator's material the script was built from, verbatim, to check claims and examples against."
+        },
         "angle": {
           "type": "object"
         },

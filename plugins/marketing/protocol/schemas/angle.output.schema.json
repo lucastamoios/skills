@@ -33,6 +33,18 @@
                 "type": "string",
                 "description": "The single idea the video defends, one sentence."
               },
+              "thesis_basis": {
+                "type": "string",
+                "description": "The creator's words the thesis comes from, quoted, or 'inference: ...' when it goes beyond them."
+              },
+              "outcome": {
+                "type": "string",
+                "description": "The desfecho of the case the thesis stands on: what changed after, for whom."
+              },
+              "outcome_basis": {
+                "type": "string",
+                "description": "The creator's words the outcome comes from, quoted."
+              },
               "viewer_before": {
                 "type": "string",
                 "description": "What the viewer believes or lives today."
@@ -86,13 +98,16 @@
             "required": [
               "id",
               "thesis",
+              "thesis_basis",
               "viewer_before",
               "viewer_after",
               "so_what",
               "job",
               "proof",
               "demonstrable",
-              "cta_bridge"
+              "cta_bridge",
+              "outcome",
+              "outcome_basis"
             ],
             "additionalProperties": false
           }

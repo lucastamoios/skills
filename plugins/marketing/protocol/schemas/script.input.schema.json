@@ -43,7 +43,8 @@
           "type": "object"
         },
         "target_seconds": {
-          "type": "number"
+          "type": "number",
+          "description": "Optional length preference from the user. Information, not a limit; the script's length follows what the content needs."
         },
         "format_preference": {
           "type": "string",

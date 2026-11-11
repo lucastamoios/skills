@@ -4,8 +4,11 @@ import json
 import sys
 from pathlib import Path
 
-from jsonschema import Draft202012Validator
-from referencing import Registry, Resource
+try:
+    from jsonschema import Draft202012Validator
+    from referencing import Registry, Resource
+except ImportError:
+    sys.exit("validate.py needs jsonschema. Run: uv run --with jsonschema python3 scripts/validate.py <schema-name> <file.json>")
 
 SCHEMAS = Path(__file__).resolve().parent.parent / "protocol" / "schemas"
 

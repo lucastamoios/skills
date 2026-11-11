@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "culto.input.schema.json",
+  "title": "marketing:culto input",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "culto"
+    },
+    "language": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The creator's name."
+        },
+        "conversation": {
+          "type": "array",
+          "description": "Every turn so far, verbatim and in order. Empty or absent on the first call.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question",
+              "answer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "format_scores": {
+          "type": "array",
+          "description": "Scores from 0 to 5 for the items in the interview guide.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "item": {
+                "type": "string"
+              },
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5
+              }
+            },
+            "required": [
+              "item",
+              "score"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "forced_choice": {
+          "type": "string",
+          "description": "The three kinds of video he would keep for a month, in his words."
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "input"
+  ],
+  "additionalProperties": false
+}

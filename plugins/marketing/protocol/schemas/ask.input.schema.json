@@ -52,6 +52,36 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 10
+        },
+        "conversation": {
+          "type": "array",
+          "description": "The turns of the current case so far, verbatim and in order: each question asked and the creator's answer. Empty or absent on the first call.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question",
+              "answer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "used_topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Topics and cases already used in earlier scripts, so the interview does not return to them."
         }
       },
       "required": [

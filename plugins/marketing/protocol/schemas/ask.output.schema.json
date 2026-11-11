@@ -31,7 +31,11 @@
               },
               "question": {
                 "type": "string",
-                "description": "One question, asking for a specific past event."
+                "description": "One interrogative sentence, short, asking one thing about a specific past event. No list of sub-questions."
+              },
+              "source_opener": {
+                "type": "string",
+                "description": "In discover, the opener of references/perguntas.md this question was adapted from, quoted. Required on the first discover turn."
               },
               "elicits": {
                 "type": "array",
@@ -60,7 +64,7 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Short follow-ups if the answer comes back abstract."
+                "description": "Next-turn questions, one thing each. Never asked together with `question`."
               }
             },
             "required": [
@@ -72,10 +76,87 @@
             ],
             "additionalProperties": false
           }
+        },
+        "case": {
+          "type": "object",
+          "description": "What the conversation already holds about the case, in the creator's words. Present when conversation is given.",
+          "properties": {
+            "topic": {
+              "type": "string",
+              "description": "The topic found, in the creator's words; empty while discovering."
+            },
+            "done": {
+              "type": "boolean",
+              "description": "True only when topic, what_happened, outcome and thesis are all filled from the creator's words. format_evidence helps but does not block."
+            },
+            "what_happened": {
+              "type": "string",
+              "description": "The event or scene, quoted or close to the creator's words; empty if missing."
+            },
+            "outcome": {
+              "type": "string",
+              "description": "The desfecho: what changed after, for whom, with a number or proof when there is one; empty if missing."
+            },
+            "thesis": {
+              "type": "string",
+              "description": "What the creator says the case means, in their words; empty if missing."
+            },
+            "proof": {
+              "type": "string",
+              "description": "A number, artifact or result that shows the outcome; empty if missing."
+            },
+            "format_evidence": {
+              "type": "string",
+              "description": "How he would show it: who he was with, what he used or showed, where. Empty if missing."
+            },
+            "missing": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "what_happened",
+                  "outcome",
+                  "thesis",
+                  "proof",
+                  "link_thesis_outcome",
+                  "topic",
+                  "format_evidence"
+                ]
+              }
+            },
+            "uncertain_terms": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Words in the answers that look like transcription errors, to confirm with the creator."
+            },
+            "viewer_action": {
+              "type": "string",
+              "description": "What the creator recommends the viewer do, in his words, and what he did himself."
+            }
+          },
+          "required": [
+            "done",
+            "what_happened",
+            "outcome",
+            "thesis",
+            "missing"
+          ],
+          "additionalProperties": false
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "discover",
+            "complete"
+          ],
+          "description": "discover: interviewing to find the topic. complete: closing the case of a known topic."
         }
       },
       "required": [
-        "questions"
+        "questions",
+        "mode"
       ],
       "additionalProperties": false
     },

@@ -2,7 +2,7 @@
   "id": "agent-skills-public",
   "version": "0.1.0-preview",
   "license": "MIT",
-  "skills": 79,
+  "skills": 80,
   "runtime": "Python 3.10+",
   "network_required_for_setup": false
 }

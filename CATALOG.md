@@ -1,6 +1,6 @@
 # Skill catalog
 
-The installer registers 79 commands. Use `$name` in Codex or `/name` in Claude Code. Start with the main entrypoint for a workflow; worker procedures may require a prepared input packet, connected tools or a model policy.
+The installer registers 80 commands. Use `$name` in Codex or `/name` in Claude Code. Start with the main entrypoint for a workflow; worker procedures may require a prepared input packet, connected tools or a model policy.
 
 Standalone plugin aliases keep their original protocol identifiers. See [command-map.json](command-map.json) for the mapping.
 
@@ -100,6 +100,7 @@ Standalone plugin aliases keep their original protocol identifiers. See [command
 | [marketing-angle](skills/marketing-angle/SKILL.md) | Turn a creator's concrete case into video angles that say why the viewer should care, as structured JSON. |
 | [marketing-ask](skills/marketing-ask/SKILL.md) | Generate questions that pull a concrete, filmable case out of a creator (scene, numbers, before and after, mistake, decision) instead of opinions, as structured JSON. |
 | [marketing-critique](skills/marketing-critique/SKILL.md) | Judge a short-video script the way the content expert does and return a structured verdict (approve, revise, rethink), per-criterion scores, beat-level issues with concrete fixes, what. |
+| [marketing-culto](skills/marketing-culto/SKILL.md) | Interview a creator one question at a time to build the personal brand document (culto), the data every other marketing skill needs, and a graded format profile, as structured JSON. |
 | [marketing-offer](skills/marketing-offer/SKILL.md) | Build a creator's offer as structured JSON with a One Belief and answers to the 10 offer questions (difference, why care, how true, problem mechanism, enemy, why now, why trust, solution. |
 | [marketing-reference](skills/marketing-reference/SKILL.md) | Explain why a short video that performed well worked, as structured JSON. |
 | [marketing-run](skills/marketing-run/SKILL.md) | Single entry point for short-video work. |

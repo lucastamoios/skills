@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing Culto"
+  short_description: "marketing/v1 worker: culto"
+  default_prompt: "Use $marketing:culto with an input JSON (contract marketing/v1) and return only the output JSON."

@@ -38,6 +38,32 @@
           "items": {
             "type": "string"
           }
+        },
+        "previous_scripts": {
+          "type": "array",
+          "description": "Every script already made for this creator, from the index in <creator>-roteiros.md: the fact it used, its thesis, and its status. Used to avoid repeating a script or overlapping its thesis.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "fact": {
+                "type": "string"
+              },
+              "thesis": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "thesis"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [

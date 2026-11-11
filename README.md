@@ -2,7 +2,7 @@
 
 **The skills I use to build software, keep useful context and turn ideas into work.**
 
-A collection of 79 reusable commands for Codex and Claude Code. They cover development, independent reviews, technical explanations, knowledge management, business experiments and short-form content.
+A collection of 80 reusable commands for Codex and Claude Code. They cover development, independent reviews, technical explanations, knowledge management, business experiments and short-form content.
 
 Start with a problem you actually have. Pick a skill, give it the relevant context and keep steering. The workflows describe how to work; your private configuration tells them where your projects, notes and tools live.
 
@@ -128,7 +128,7 @@ $marketing-run Analyze this reference and help me draft a short video
 for the creator profile I configured.
 ```
 
-The marketing procedures separate reference analysis, source material, angle, offer, script and critique. Claims need supplied evidence. Creator profiles, offers and expert feedback stay in your private context.
+The marketing procedures separate the creator interview (culto), reference analysis, source material, angle, offer, script and critique. Claims need supplied evidence. Creator profiles, offers and expert feedback stay in your private context.
 
 ## How the collection fits together
 

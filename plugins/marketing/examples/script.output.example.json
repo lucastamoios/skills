@@ -128,6 +128,6 @@
   },
   "missing_inputs": [],
   "warnings": [
-    "43 s passa da meta de 30 s; ver a alternativa de dividir."
+    "43 s passa do ideal de 30 s, mas fica dentro do aceitável de 60 s se cada beat prender; ver a alternativa de dividir."
   ]
 }

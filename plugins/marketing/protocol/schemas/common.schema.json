@@ -11,6 +11,10 @@
         "niche": {
           "type": "string"
         },
+        "theme": {
+          "type": "string",
+          "description": "The theme every video starts from and returns to, in the creator's words. A video may touch other subjects, but its purpose leads back to this theme."
+        },
         "audience": {
           "type": "string",
           "description": "Who the creator wants to reach and what they want."

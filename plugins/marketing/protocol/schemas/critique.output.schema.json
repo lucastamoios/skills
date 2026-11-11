@@ -111,7 +111,7 @@
         },
         "rethink_reason": {
           "type": "string",
-          "description": "When verdict is rethink: which upstream step (material, angle, reference) must change."
+          "description": "When verdict is rethink: which upstream step must change (ask, angle, material, reference)."
         }
       },
       "required": [

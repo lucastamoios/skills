@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "culto.output.schema.json",
+  "title": "marketing:culto output",
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "marketing/v1"
+    },
+    "skill": {
+      "const": "culto"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "needs_input",
+        "blocked"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "reply": {
+          "type": "string",
+          "description": "One or two sentences to the creator. It does not hold the question."
+        },
+        "question": {
+          "type": "string",
+          "description": "The next question. Empty when done."
+        },
+        "part": {
+          "enum": [
+            "origem",
+            "drives",
+            "inimigos",
+            "fraquezas",
+            "associacoes",
+            "linguagem",
+            "dados",
+            "formato"
+          ]
+        },
+        "uncertain_terms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "data_to_save": {
+          "type": "array",
+          "description": "Every answer, verbatim, for <creator>-dados.md.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question",
+              "answer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "sections": {
+          "type": "object",
+          "properties": {
+            "origem": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "drives": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "inimigos": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "fraquezas": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "associacoes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "linguagem": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "creator": {
+          "type": "object",
+          "properties": {
+            "handle": {
+              "type": "string"
+            },
+            "niche": {
+              "type": "string"
+            },
+            "theme": {
+              "type": "string"
+            },
+            "audience": {
+              "type": "string"
+            },
+            "voice_samples": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "authority": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "constraints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "assets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "product": {
+          "$ref": "common.schema.json#/$defs/product"
+        },
+        "format": {
+          "type": "object",
+          "properties": {
+            "rejected": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "top_choices": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "recommendation": {
+              "type": "string",
+              "description": "An inference from the scores and the forced choice."
+            }
+          },
+          "additionalProperties": false
+        },
+        "missing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "done": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "reply",
+        "question",
+        "part",
+        "data_to_save",
+        "sections",
+        "done"
+      ],
+      "additionalProperties": false
+    },
+    "missing_inputs": {
+      "type": "array"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "skill",
+    "status"
+  ],
+  "additionalProperties": false
+}
